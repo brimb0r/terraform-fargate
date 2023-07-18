@@ -1,0 +1,9 @@
+variable "aws_security_groupegress_all" {}
+variable "aws_security_grouphttp" {}
+variable "aws_security_grouphttps" {}
+variable "aws_security_groupingress_api" {}
+variable "aws_vpc" {}
+variable "private_d" {}
+variable "private_e" {}
+variable "public_d" {}
+variable "public_e" {}

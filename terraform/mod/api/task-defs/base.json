@@ -1,0 +1,33 @@
+[
+  {
+    "name": "${api_name}",
+    "image": "${api_image}",
+    "essential": true,
+    "portMappings": [
+        {
+            "protocol": "tcp",
+            "containerPort": 3000,
+            "hostPort": 3000
+        }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "${api_logs_group}",
+          "awslogs-region": "${region}",
+          "awslogs-stream-prefix" : "fargate"
+      }
+    },
+    "environment": [
+      { "name": "FLAGS", "value": "${api_flags}" }
+    ],
+    "volumesFrom": [
+    ],
+    "dependsOn": [],
+    "command": [
+      "sh",
+      "-c",
+      "echo"
+    ]
+  }
+]
