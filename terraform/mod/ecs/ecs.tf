@@ -165,11 +165,13 @@ resource "aws_alb_listener" "api_http" {
   }
 }
 
+variable "web_ssl_cert_arn" {}
+
 resource "aws_alb_listener" "api_https" {
   load_balancer_arn = aws_alb.api.arn
   port              = "443"
   protocol          = "HTTPS"
-  certificate_arn   = aws_acm_certificate.api.arn
+  certificate_arn   = var.web_ssl_cert_arn
 
   default_action {
     type             = "forward"
@@ -179,13 +181,4 @@ resource "aws_alb_listener" "api_https" {
 
 output "alb_url" {
   value = "http://${aws_alb.api.dns_name}"
-}
-
-resource "aws_acm_certificate" "api" {
-  domain_name       = "api.craig.net"
-  validation_method = "DNS"
-}
-
-output "domain_validations" {
-  value = aws_acm_certificate.api.domain_validation_options
 }

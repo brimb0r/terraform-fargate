@@ -4,10 +4,6 @@ module "networking" {
   // Export to use in sub deps
 }
 
-/*
-
-refactored
-//TODO : delete me after review cycle
 module "ecs" {
   source             = "../mod/ecs"
   // move to int when building for other envs
@@ -20,8 +16,9 @@ module "ecs" {
   private_e = module.networking.private_e
   public_d = module.networking.public_d
   public_e = module.networking.public_e
+  web_ssl_cert_arn = var.web_ssl_cert_arn
+  depends_on = [module.networking]
 }
-*/
 
 //TODO: Once done move towards OOP mods ( start stubbing out )
 

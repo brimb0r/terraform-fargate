@@ -37,7 +37,7 @@ resource "aws_ecs_service" "api" {
 
 
 resource "aws_ecs_task_definition" "api" {
-  family                   = format("api-%s-%s", var.environment, var.aws_region)
+  family                   = "api"
   container_definitions    = data.template_file.api.rendered
   execution_role_arn       = aws_iam_role.api_instance_region_role.arn
   task_role_arn            = aws_iam_role.api_instance_region_role.arn

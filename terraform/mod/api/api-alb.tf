@@ -10,10 +10,11 @@ module "api-lb-primary" {
   dns_zone_value     = "api-${var.dns_zone_value}"
   internal           = false
   ingress_whitelist  = var.api_whitelist
-  ingress_rules_http = []
+  ingress_rules_http = [[80, 80, "tcp", "LB can be reached by this"],[3000, 3000, "tcp", "LB can be reached by this"],]
   ingress_rules_https = [
     # [from_port, to_port, protocol, description]
     [443, 443, "tcp", "LB can be reached by this"],
+    [3000, 3000, "tcp", "LB can hit this"]
   ]
   listener_targets = [
     { lb_port = 443, lb_proto = "HTTPS", be_port = 3000, be_proto = "HTTP" },
