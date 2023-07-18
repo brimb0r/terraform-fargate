@@ -3,7 +3,7 @@ module "api-lb-primary" {
   lb_name            = format("api-%s-%s", var.environment, var.aws_region)
   name               = "api"
   environment        = var.environment
-  subnet_ids         = var.public_subnet_ids
+  subnet_ids         = [var.public_e, var.public_d]
   web_ssl_cert_arn   = var.web_ssl_cert_arn
   vpc_id             = var.aws_vpc_id
   dns_zone_id        = var.dns_zone_id

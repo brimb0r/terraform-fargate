@@ -23,11 +23,6 @@
     ],
     "volumesFrom": [
     ],
-    "dependsOn": [],
-    "command": [
-      "sh",
-      "-c",
-      "echo"
-    ]
+    "dependsOn": []
   }
 ]

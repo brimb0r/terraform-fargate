@@ -6,9 +6,7 @@ variable "subnet_ids" {
 
 variable "web_ssl_cert_arn" {}
 
-variable "vpc_id" {
-  default = "vpc-0ee18d3d1660cb17b"
-}
+variable "vpc_id" {}
 
 variable "dns_zone_id" {}
 

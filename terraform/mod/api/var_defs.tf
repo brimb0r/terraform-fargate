@@ -17,8 +17,6 @@ variable "dns_zone_id" {}
 variable "dns_zone_value" {}
 variable "environment" {}
 variable "log_script_filter" { default = 1 }
-variable "private_subnet_ids" {}
-variable "public_subnet_ids" {}
 variable "web_ssl_cert_arn" {}
 
 
