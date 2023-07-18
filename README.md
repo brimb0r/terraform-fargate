@@ -5,9 +5,7 @@
 5. plan - apply - from root dir
     1. terraform init -backend-config=../env/dev/us-east-1/dev.backend
     2. terraform plan --var-file=../env/dev/us-east-1/dev.tfvars -out=planfile
-    3. terraform apply --var-file=../env/dev/us-east-1/dev.tfvars -target=module.networking
-    4. terraform apply --var-file=../env/dev/us-east-1/dev.tfvars -target=module.networking
-    5. terraform apply --var-file=../env/dev/us-east-1/dev.tfvars -target=module.networking
+    3. terraform apply --var-file=../env/dev/us-east-1/dev.tfvars
 
 ## Docker - build and push to ECR
 ``` 
