@@ -37,8 +37,6 @@ module "api" {
   dns_zone_id        = var.dns_zone_id
   dns_zone_value     = format("%s-%s.coast-test.%s", var.environment, var.aws_region, var.environment == "prod" ? "com" : "net")
   environment        = var.environment
-  private_subnet_ids = [module.networking.private_d, module.networking.private_e]
-  public_subnet_ids  = [module.networking.public_d, module.networking.public_e]
   web_ssl_cert_arn   = var.web_ssl_cert_arn
   aws_vpc = module.networking.aws_vpc
   private_d = module.networking.private_d
@@ -47,4 +45,5 @@ module "api" {
   public_e = module.networking.public_e
   aws_security_groupegress_all = module.networking.aws_security_groupegress_all
   aws_security_groupingress_api = module.networking.aws_security_groupingress_api
+  depends_on = [module.networking]
 }
