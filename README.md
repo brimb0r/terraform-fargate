@@ -3,10 +3,12 @@
 3. route53
 4. cert - domain ( registart takes up to 1 hour)
 5. plan - apply - from root dir
-    1. terraform init -backend-config=../env/dev/us-east-1/dev.backend
-    2. terraform plan --var-file=../env/dev/us-east-1/dev.tfvars -out=planfile
-    3. terraform apply --var-file=../env/dev/us-east-1/dev.tfvars
-
+6. - Follow env hierarchy e.g 001, 002, so on and so forth recursively as well
+    1. terraform init 
+    2. terraform plan -out=planfile
+    3. terraform apply
+    4. when done terraform destroy 
+       5. Note :: You can use --auto-approve flag if you are confident
 ## Docker - build and push to ECR
 ``` 
 docker build -t coast-test-go .
