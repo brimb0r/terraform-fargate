@@ -1,5 +1,5 @@
 module "sunrise_api" {
-  source                    = "../../../../../inframod/ecs-api"
+  source                    = "../../../../../inframod/sunrise-ecs-api"
   aws_region                = "us-east-1"
   dns_zone_id               = "Z029066226EQ52O1INONO"
   environment               = "dev"
