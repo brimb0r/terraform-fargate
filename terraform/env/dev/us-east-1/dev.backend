@@ -1,5 +1,0 @@
-    encrypt        = true
-    bucket         = "subprod-terraform-state-store-us-east-1"
-    dynamodb_table = "subprod-state-store"
-    key            = "dev-api.tfstate"
-    region         = "us-east-1"

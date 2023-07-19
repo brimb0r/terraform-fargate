@@ -1,14 +1,5 @@
-module "networking" {
-  source            = "../mod/networking"
-  priv_d_cidr_block = var.priv_d_cidr_block
-  priv_e_cidr_block = var.priv_e_cidr_block
-  pub_d_cidr_block  = var.pub_d_cidr_block
-  pub_e_cidr_block  = var.pub_e_cidr_block
-  vpc_cidr_block    = var.vpc_cidr_block
-}
-
 module "api" {
-  source                       = "../mod/api"
+  source                       = "../../mod/api"
   api_dns_value                = format("%s-%s-api.coast-test.%s", var.environment, var.aws_region, var.environment == "prod" ? "com" : "net")
   api_image                    = "public.ecr.aws/u8j1b7o3/coast-test-go:latest"
   api_whitelist                = var.api_whitelist
