@@ -16,7 +16,7 @@ resource "aws_ecs_service" "api" {
   load_balancer {
     target_group_arn = module.api-lb-primary.alb_tg_arn[0]
     container_name   = "api"
-    container_port   = "3000"
+    container_port   = var.container_port
   }
 
   network_configuration {
@@ -24,7 +24,7 @@ resource "aws_ecs_service" "api" {
 
     security_groups = [
       var.aws_security_groupegress_all,
-      var.aws_security_groupingress_api,
+      aws_security_group.ingress_api.id,
     ]
 
     subnets = [
@@ -45,7 +45,6 @@ resource "aws_ecs_task_definition" "api" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = 256
   memory                   = 512
-
   tags = {
     Environment = var.environment
   }
@@ -60,6 +59,7 @@ data "template_file" "api" {
     environment    = var.environment
     api_flags      = "-fargate -environment ${var.environment} -region ${var.aws_region}"
     api_logs_group = aws_cloudwatch_log_group.api.name
+    container_port = var.container_port
   }
 }
 
@@ -68,5 +68,18 @@ resource "aws_cloudwatch_log_group" "api" {
 
   tags = {
     Environment = var.environment
+  }
+}
+
+resource "aws_security_group" "ingress_api" {
+  name        = format("ingress-api-%s-%s", var.environment, var.aws_region)
+  description = "Allow ingress to API"
+  vpc_id      = var.aws_vpc
+
+  ingress {
+    from_port   = var.container_port
+    to_port     = var.container_port
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }

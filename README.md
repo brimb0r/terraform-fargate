@@ -14,3 +14,8 @@ docker tag coast-test-go:latest public.ecr.aws/u8j1b7o3/coast-test:latest
 docker push public.ecr.aws/u8j1b7o3/coast-test-go:latest
 
 ```
+
+## TODO 
+
+- Add in compose build process ( add in crud )
+- local stack for local CI testing

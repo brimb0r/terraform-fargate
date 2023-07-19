@@ -1,10 +1,10 @@
 resource "aws_vpc" "app_vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr_block
 }
 
 resource "aws_subnet" "public_d" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = "10.0.1.0/25"
+  cidr_block        = var.pub_d_cidr_block
   availability_zone = "us-east-1d"
 
   tags = {
@@ -14,7 +14,7 @@ resource "aws_subnet" "public_d" {
 
 resource "aws_subnet" "private_d" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = "10.0.2.0/25"
+  cidr_block        = var.priv_d_cidr_block
   availability_zone = "us-east-1d"
 
   tags = {
@@ -24,7 +24,7 @@ resource "aws_subnet" "private_d" {
 
 resource "aws_subnet" "public_e" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = "10.0.1.128/25"
+  cidr_block        = var.pub_e_cidr_block
   availability_zone = "us-east-1e"
 
   tags = {
@@ -34,7 +34,7 @@ resource "aws_subnet" "public_e" {
 
 resource "aws_subnet" "private_e" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = "10.0.2.128/25"
+  cidr_block        = var.priv_e_cidr_block
   availability_zone = "us-east-1e"
 
   tags = {
@@ -138,19 +138,6 @@ resource "aws_security_group" "egress_all" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-resource "aws_security_group" "ingress_api" {
-  name        = "ingress-api"
-  description = "Allow ingress to API"
-  vpc_id      = aws_vpc.app_vpc.id
-
-  ingress {
-    from_port   = 3000
-    to_port     = 3000
-    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }

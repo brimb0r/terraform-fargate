@@ -7,9 +7,6 @@ output "aws_security_grouphttp" {
 output "aws_security_grouphttps" {
   value = aws_security_group.https.id
 }
-output "aws_security_groupingress_api" {
-  value = aws_security_group.ingress_api.id
-}
 output "aws_vpc" {
   value = aws_vpc.app_vpc.id
 }

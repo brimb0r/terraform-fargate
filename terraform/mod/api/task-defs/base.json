@@ -6,8 +6,8 @@
     "portMappings": [
         {
             "protocol": "tcp",
-            "containerPort": 3000,
-            "hostPort": 3000
+            "containerPort": ${container_port},
+            "hostPort": ${container_port}
         }
     ],
     "logConfiguration": {

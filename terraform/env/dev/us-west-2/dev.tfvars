@@ -1,7 +1,7 @@
-aws_region                = "us-east-1"
-dns_zone_id               = "Z029066226EQ52O1INONO"
+aws_region                = "us-west-2"
+dns_zone_id               = "Z029066226EQ52O1INONO" // need to make a new zone
 environment               = "dev"
-web_ssl_cert_arn          = "arn:aws:acm:us-east-1:826238445673:certificate/d577b734-a901-483e-9379-1f6fbcd5445f"
+web_ssl_cert_arn          = "" // need us-west-2 cert
 vpc_cidr_block            = "10.0.0.0/16"
 pub_d_cidr_block          = "10.0.1.0/25"
 priv_d_cidr_block         = "10.0.2.0/25"
